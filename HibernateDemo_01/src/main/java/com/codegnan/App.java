@@ -1,5 +1,9 @@
 package com.codegnan;
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -31,8 +35,15 @@ public class App
             
 //            session.getTransaction().commit();
 //            System.out.println("Saved successfully");
-        	Employee employee = session.get(com.codegnan.entity.Employee.class, 101);
-        	System.out.println(employee);
+//        	Employee employee = session.get(com.codegnan.entity.Employee.class, 101);
+//        	System.out.println(employee);
+        	
+        	Query query = session.createQuery("from Employee");
+        	List<Employee> list = (List<Employee>) query.getResultList();
+        	for(Employee emp : list) {
+        		System.out.println(emp);
+        	}
+        	
         }
         catch(Exception e) {
         	e.printStackTrace();
