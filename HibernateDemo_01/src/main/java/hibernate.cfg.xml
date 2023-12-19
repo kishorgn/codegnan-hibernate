@@ -13,13 +13,13 @@
 		
 		<!-- Persistency properties -->
 		<property name="hbm2ddl.auto">update</property>
-		<property name="connection.pool_size">1</property>
+		<property name="connection.pool_size">10</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
 		
 		<!-- Logging Properties -->
 		<property name="show_sql">true</property>
 		
-		<mapping resource="employee.hbm.xml"/>
+		<mapping class="com.codegnan.entity.Employee"/>
 		
 	</session-factory>
 </hibernate-configuration>

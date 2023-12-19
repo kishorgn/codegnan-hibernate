@@ -23,13 +23,16 @@ public class App
         SessionFactory sessionFactory = sessionFactoryBuilder.build();
         
         Session session =  sessionFactory.openSession();
-        session.beginTransaction();
+        
+//        session.beginTransaction();
         try {
-        	Employee employee = new Employee(102, "Raghu", "Sharma");
-            session.save(employee);
+//        	Employee employee = new Employee("Sam", "Peter");
+//            session.save(employee);
             
-            session.getTransaction().commit();
-            System.out.println("Saved successfully");
+//            session.getTransaction().commit();
+//            System.out.println("Saved successfully");
+        	Employee employee = session.get(com.codegnan.entity.Employee.class, 101);
+        	System.out.println(employee);
         }
         catch(Exception e) {
         	e.printStackTrace();

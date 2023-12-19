@@ -1,6 +1,14 @@
 package com.codegnan.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Employee {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	String firstName;
 	String lastName;
@@ -11,6 +19,11 @@ public class Employee {
 	public Employee(int id, String firstName, String lastName) {
 		super();
 		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	public Employee(String firstName, String lastName) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
