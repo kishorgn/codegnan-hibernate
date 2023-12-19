@@ -14,16 +14,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.codegnan.entity.Employee;
 import com.codegnan.exception.InvalidEmployeeIdException;
+import com.codegnan.helper.SessionFactoryHelper;
 
 public class EmployeeDao {
 	public Employee findById(int id) throws InvalidEmployeeIdException {
-		StandardServiceRegistryBuilder standardServiceRegistryBuilder = new StandardServiceRegistryBuilder();
-    	StandardServiceRegistry standardServiceRegistry = standardServiceRegistryBuilder.configure("hibernate.cfg.xml").build();
-    	MetadataSources metadataSources = new MetadataSources(standardServiceRegistry);
-        Metadata meta = metadataSources.getMetadataBuilder().build();
-        SessionFactoryBuilder sessionFactoryBuilder = meta.getSessionFactoryBuilder() ;
-        SessionFactory sessionFactory = sessionFactoryBuilder.build();
-        
+		
+        SessionFactory sessionFactory = SessionFactoryHelper.getSessionFactory() ;
         Session session =  sessionFactory.openSession();
 		Employee employee = session.get(Employee.class, id) ;
 		try {
@@ -33,27 +29,29 @@ public class EmployeeDao {
 		}
 		finally {
 			session.close();
-			sessionFactory.close();
 		}
 		return employee;
 		
 	}
 	public List<Employee> findAll(){
-		StandardServiceRegistryBuilder standardServiceRegistryBuilder = new StandardServiceRegistryBuilder();
-    	StandardServiceRegistry standardServiceRegistry = standardServiceRegistryBuilder.configure("hibernate.cfg.xml").build();
-    	MetadataSources metadataSources = new MetadataSources(standardServiceRegistry);
-        Metadata meta = metadataSources.getMetadataBuilder().build();
-        SessionFactoryBuilder sessionFactoryBuilder = meta.getSessionFactoryBuilder() ;
-        SessionFactory sessionFactory = sessionFactoryBuilder.build();
+		SessionFactory sessionFactory = SessionFactoryHelper.getSessionFactory() ;
         
         Session session =  sessionFactory.openSession();
         Query query = session.createQuery("from Employee");
         List<Employee> employees = (List<Employee>) query.getResultList();
         session.close();
-        sessionFactory.close();
         return employees;
 	}
-	//save
+	public int save(Employee employee) {
+		SessionFactory sessionFactory = SessionFactoryHelper.getSessionFactory() ;
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		int id = (int)session.save(employee);
+		session.getTransaction().commit();
+		session.close();
+		return id;
+	}
 	//edit
 	//delete
 }
