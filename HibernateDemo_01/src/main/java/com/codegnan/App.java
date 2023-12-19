@@ -28,21 +28,18 @@ public class App
         
         Session session =  sessionFactory.openSession();
         
-//        session.beginTransaction();
+        session.beginTransaction();
         try {
-//        	Employee employee = new Employee("Sam", "Peter");
-//            session.save(employee);
-            
-//            session.getTransaction().commit();
-//            System.out.println("Saved successfully");
-//        	Employee employee = session.get(com.codegnan.entity.Employee.class, 101);
-//        	System.out.println(employee);
+        	Employee employee = session.get(com.codegnan.entity.Employee.class, 101);
         	
-        	Query query = session.createQuery("from Employee");
-        	List<Employee> list = (List<Employee>) query.getResultList();
-        	for(Employee emp : list) {
-        		System.out.println(emp);
-        	}
+        	employee.setFirstName("Sudha");
+        	session.update(employee);
+        	employee.setLastName("Verma");
+//        	session.update(employee);
+            
+            session.getTransaction().commit();
+            System.out.println("Saved successfully");
+        	
         	
         }
         catch(Exception e) {
