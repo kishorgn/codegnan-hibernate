@@ -32,10 +32,7 @@ public class App
         try {
         	Employee employee = session.get(com.codegnan.entity.Employee.class, 101);
         	
-        	employee.setFirstName("Sudha");
-        	session.update(employee);
-        	employee.setLastName("Verma");
-//        	session.update(employee);
+        	session.delete(employee);
             
             session.getTransaction().commit();
             System.out.println("Saved successfully");
