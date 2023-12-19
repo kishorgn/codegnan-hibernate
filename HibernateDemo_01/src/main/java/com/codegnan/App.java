@@ -11,10 +11,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import com.codegnan.entity.Employee;
 
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
@@ -28,15 +24,21 @@ public class App
         
         Session session =  sessionFactory.openSession();
         session.beginTransaction();
-        
-        Employee employee = new Employee(102, "Raghu", "Sharma");
-        session.save(employee);
-        
-        System.out.println("Saved successfully");
-        
-        session.getTransaction().commit();
-        session.close();
-        sessionFactory.close();
-        
+        try {
+        	Employee employee = new Employee(102, "Raghu", "Sharma");
+            session.save(employee);
+            
+            session.getTransaction().commit();
+            System.out.println("Saved successfully");
+        }
+        catch(Exception e) {
+        	e.printStackTrace();
+        }
+        finally {
+        	session.close();
+            sessionFactory.close();
+            System.out.println("End of the program.");
+        }
+           
     }
 }
