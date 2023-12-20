@@ -4,21 +4,20 @@
    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
    
 <hibernate-mapping>
-    <class name="com.codegnan.entity.Employee" table="emp101" discriminator-value="emp">
+    <class name="com.codegnan.entity.Employee" table="emp201">
     	<id name="id">
     		<generator class="increment"/>
     	</id>
-    	<discriminator column="type" type="string"></discriminator>
     	<property name="name"/>
     	
-    	<subclass name="com.codegnan.entity.RegularEmployee" discriminator-value="regemp">
+    	<union-subclass name="com.codegnan.entity.RegularEmployee" table="regemp201">
     	   <property name = "salary"/>
     	   <property name = "bonus"/>
-    	</subclass>
+    	</union-subclass>
     	
-    	<subclass name="com.codegnan.entity.ContractEmployee" discriminator-value="conemp">
+    	<union-subclass name="com.codegnan.entity.ContractEmployee" table="conemp201">
     		<property name="payPerHr"/>
     		<property name="contractPeriod"/>
-    	</subclass>
+    	</union-subclass>
     </class>
 </hibernate-mapping>
