@@ -1,6 +1,6 @@
 package com.codegnan.entity;
 
-public class RegularEmployee {
+public class RegularEmployee extends Employee {
 	double salary;
 	int bonus;
 	public double getSalary() {

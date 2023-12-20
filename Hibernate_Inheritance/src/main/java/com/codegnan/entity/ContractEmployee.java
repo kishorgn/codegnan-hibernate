@@ -1,6 +1,6 @@
 package com.codegnan.entity;
 
-public class ContractEmployee {
+public class ContractEmployee extends Employee {
 	double payPerHr ;
 	String contractPeriod;
 	public double getPayPerHr() {
