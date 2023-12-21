@@ -16,7 +16,7 @@ import com.codegnan.entity.Question;
  * Hello world!
  *
  */
-public class App1 
+public class App
 {
     public static void main( String[] args )
     {
