@@ -1,6 +1,9 @@
 package com.codegnan;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 
 import javax.persistence.TypedQuery;
@@ -36,9 +39,14 @@ public class App2
         List<Question> questions = query.getResultList();
         for(Question question : questions) {
         	System.out.println("Question : "+question.getQname());
-        	TreeSet<String> answers = new TreeSet( question.getAnswer() );
-        	for(String answer : answers) {
-        		System.out.println(answer);
+        	System.out.println("Asked by: "+question.getUsername());
+        	Map<String, String> map = question.getAnswer();
+        	Set<Map.Entry<String, String>> answers = map.entrySet();
+        	Iterator<Map.Entry<String, String>> it = answers.iterator();
+        	while(it.hasNext()) {
+        		Map.Entry<String, String> answer = it.next();
+        		System.out.print("Answer by - "+ answer.getKey() );
+        		System.out.println(", Answer : " + answer.getValue() );
         	}
         }
         

@@ -1,6 +1,7 @@
 package com.codegnan;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.TreeSet;
 
 import org.hibernate.Session;
@@ -32,24 +33,24 @@ public class App
         
         session.beginTransaction();
         
-        TreeSet<String> list1 = new TreeSet<>();
-        list1.add("Java is a Platform");
-        list1.add("Java is a programming language");
+        HashMap<String, String> map1 = new HashMap<>();
+        map1.put("Lakshmi", "Java is a programming language");
+        map1.put("Swathi", "Java is a platform");
         
-        TreeSet<String> list2 = new TreeSet<>();
-        list2.add("Group of elements");
-        list2.add("One of the Java APIs");
+        HashMap<String, String> map2 = new HashMap<>();
+        map2.put("Harsh", "Java Database Connectivity");
+        map2.put("Gopal", "JDBC is an API");
+        map2.put("Radhika", "Underlaying framework for all JPA implementations");
         
         Question question1 = new Question();
-        question1.setQname("What is Java?");
-        question1.setAnswer(list1);
+        question1.setQname("What is Java");
+        question1.setUsername("Kishor");
+        question1.setAnswer(map1);
         
         Question question2 = new Question();
-        question2.setQname("What is Collection");
-        question2.setAnswer(list2);
-        
-        list1.add("Highly secured language");
-        list1.add("Java is a programming language");
+        question2.setQname("What is JDBC");
+        question2.setUsername("Kumar");
+        question2.setAnswer(map2);
         
         session.persist(question1);
         session.persist(question2);
