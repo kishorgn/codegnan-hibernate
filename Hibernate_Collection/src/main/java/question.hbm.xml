@@ -9,10 +9,9 @@
 		   <generator class="increment"/>
 		</id>
 		<property name="qname"></property>
-		<list name="answer" table="a100">
+		<set name="answer" table="a100">
 			<key column="qid"></key>
-			<index column="type"></index>
 			<element column="answer" type="string"></element>
-		</list>
+		</set>
 	</class>
 </hibernate-mapping>

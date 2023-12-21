@@ -1,6 +1,7 @@
 package com.codegnan;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,11 +32,11 @@ public class App
         
         session.beginTransaction();
         
-        ArrayList<String> list1 = new ArrayList<>();
-        list1.add("Java is a Platfor");
+        TreeSet<String> list1 = new TreeSet<>();
+        list1.add("Java is a Platform");
         list1.add("Java is a programming language");
         
-        ArrayList<String> list2 = new ArrayList<>();
+        TreeSet<String> list2 = new TreeSet<>();
         list2.add("Group of elements");
         list2.add("One of the Java APIs");
         
@@ -48,6 +49,7 @@ public class App
         question2.setAnswer(list2);
         
         list1.add("Highly secured language");
+        list1.add("Java is a programming language");
         
         session.persist(question1);
         session.persist(question2);

@@ -1,9 +1,8 @@
 package com.codegnan;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
@@ -37,7 +36,7 @@ public class App2
         List<Question> questions = query.getResultList();
         for(Question question : questions) {
         	System.out.println("Question : "+question.getQname());
-        	List<String> answers = question.getAnswer();
+        	TreeSet<String> answers = new TreeSet( question.getAnswer() );
         	for(String answer : answers) {
         		System.out.println(answer);
         	}

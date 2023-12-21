@@ -1,11 +1,11 @@
 package com.codegnan.entity;
 
-import java.util.List;
+import java.util.Set;
 
 public class Question {
 	int id;
 	String qname;
-	List<String> answer;
+	Set<String> answer;
 	public int getId() {
 		return id;
 	}
@@ -18,10 +18,10 @@ public class Question {
 	public void setQname(String qname) {
 		this.qname = qname;
 	}
-	public List<String> getAnswer() {
+	public Set<String> getAnswer() {
 		return answer;
 	}
-	public void setAnswer(List<String> answer) {
+	public void setAnswer(Set<String> answer) {
 		this.answer = answer;
 	}
 	
