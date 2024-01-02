@@ -5,9 +5,14 @@
    
 <hibernate-mapping>
 	<class name="com.codegnan.entity.Address" table="address213">
-		<id name="id">
+		<id name="aId">
 		   <generator class="increment"></generator>
 		</id>
+		<property name="street"/>
+		<property name="city"/>
+		<many-to-one name="employee">
+			<column name="eId"/>
+		</many-to-one>
 		
 	</class>
 </hibernate-mapping>
