@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0/EN" 
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.codegnan.entity.User" table="user111">
+		<id name="uId">
+			<generator class="increment"/>
+		</id>
+		<property name="username"/>
+		<property name="email"/>
+		<set name="groups" table="UserGroup" inverse="true">
+			<key column="uId"/>
+			<many-to-many column="gId" class="com.codegnan.entity.Group"/>
+		</set>
+	</class>
+</hibernate-mapping>
