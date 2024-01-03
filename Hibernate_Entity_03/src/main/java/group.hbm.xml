@@ -4,9 +4,9 @@
    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
    
 <hibernate-mapping>
-	<class name="com.codegnan.entity.Group">
+	<class name="com.codegnan.entity.Group" table="group111">
 		<id name="gId">
-			<generator class="increment"/>
+		   <generator class="increment"></generator>
 		</id>
 		<property name="name"/>
 		<set name="users" table="UserGroup" cascade="all">
